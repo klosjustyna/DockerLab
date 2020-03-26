@@ -25,11 +25,7 @@ app.get('/numberOne/numberTwo', (req, resp) => {
         numberTwo = numberTwo - numberOne;
     }  
         client.set('numberOne', parseInt(numberOne));
-    
-    // client.get('numberOne', (err, numberOne) => {
-    //     resp.send('numberOne: ' / number);
-    //     client.set('numberOne', parseInt(numberOne) + 1);
-    // }); }
+
 });
 
 app.listen(8080, () => {
