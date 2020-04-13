@@ -1,0 +1,10 @@
+sudo: required
+
+services:
+  - docker
+
+before_install:
+   - docker build -t dockerjustyna95/docker -f Dockerfile.dev DockerLab/dockerlab200409/.
+
+script:
+    - docker run -e CI=true dockerjustyna95/docker yarn test
