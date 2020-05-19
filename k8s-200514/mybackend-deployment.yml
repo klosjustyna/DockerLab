@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+
+kind: Deployment
+
+metadata:
+  name: myabackend-deployment  
+  labels:
+    app: myapp-backend
+    type: backend
+
+spec:
+  template:
+    metadata:
+      name: mybackend-pod
+      labels:
+        app: myapp-backend
+        type: backend
+    spec:
+      containers:
+      - name: my-backend-container
+        image: dockerjustyna95/backend:tag
+
+        env:
+          - name: REDIS_HOST
+            value: redis-service
+          - name: REDIS_PORT
+            value: '6379'
+
+
+  replicas: 3
+
+  selector:
+    matchLabels:
+      type: backend

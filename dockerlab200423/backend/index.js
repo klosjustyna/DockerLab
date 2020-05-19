@@ -27,7 +27,7 @@ app.get('/:param1/:param2', async(req, resp) => {
         resp.send(`NWD: ${redisVal}`)
         redisClient.set(redisKey, parseInt(redisVal));
 
-        pgClient.query('INSERT INTO results(number) VALUES' + redisVal).catch(err =>
+        pgClient.query('INSERT INTO results(number) VALUES ($1)' + [parseInt(redisVal)]).catch(err =>
             console.log(err));
     });   
 });
